@@ -230,7 +230,8 @@ The application uses PostgreSQL with nine main tables. The database schema is ma
 ---
 
 ## 📊 Screenshots
-
+- **Landing Page:** 
+  ![SME Space](docs/site_represntataive.png)
 - **SME Dashboard:** 
   ![SME Space](docs/espace_PME.png)
 - **Assessment Results:** 
