@@ -204,6 +204,9 @@ CyberAudit follows a three-tier architecture:
 │ Authentication               │
 │ Row Level Security (RLS)     │
 └──────────────────────────────┘
+
+---
+
 🔐 Security Architecture
 
 Security was considered at both the application and database levels.
