@@ -1,131 +1,467 @@
-🛡️ CyberAudit – Cybersecurity Maturity Assessment Platform for Moroccan SMEs
+# 🛡️ CyberAudit — Cybersecurity Maturity Assessment Platform
 
-🇫🇷 Plateforme web d'audit de la maturité cybersécurité des PME marocaines : auto-évaluation de 24 questions, scoring automatique, correspondance ISO 27001 / NIST CSF, rapports PDF et espace auditeur sécurisé par RLS.
+> A web-based cybersecurity maturity assessment platform designed to help Moroccan SMEs evaluate their cybersecurity posture, identify security gaps, and prioritize improvement actions.
 
-End-of-year project (PFA2) carried out at ENSA Agadir (IT Security & Digital Trust track) within the CMRPI – Espace Maroc Cyberconfiance, from 15 July to 31 August 2026.
+![Status](https://img.shields.io/badge/status-academic%20project-blue)
+![Cybersecurity](https://img.shields.io/badge/domain-cybersecurity-red)
+![GRC](https://img.shields.io/badge/focus-GRC-orange)
+![React](https://img.shields.io/badge/React-19-61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue)
+![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E)
 
-🎯 Problem Statement
+---
 
-Moroccan SMEs lack simple tools to assess their cybersecurity maturity: a classic audit is long and expensive, and the CMRPI/AUSIM SME Cybersecurity Guide is a static document. This platform turns it into an interactive self-assessment with a score, prioritized recommendations, and auditor follow-up.
+## 🇫🇷 Project Overview
 
-✨ Features
-SME Space
-Sign-up, login, password reset, company profile (sector, size, region, city)
-24-question questionnaire across 5 domains: risk context and exposure, governance and organization, access and network, awareness, backup and compliance
-Automated scoring: 18 scored questions, score out of 54, overall and per domain, mapped to 4 maturity levels (Initial, Basic, Intermediate, Advanced)
-Prioritized recommendations generated from the weakest answers
-ISO/IEC 27001 & NIST CSF mapping: each scored question is linked to a control, flagged "Covered" or "To strengthen"
-PDF diagnostic report (score gauge, per-domain breakdown, recommendations, framework mapping)
-Dashboard, audit history, audit request, action plan tracking, notifications
-Auditor Space (single CMRPI account)
-Overview: active missions, followed companies, audits to validate, average score
-Missions filterable by status (to plan, in progress, to validate, closed)
-Mission detail: score, domains, recommendations, ISO/NIST mapping, follow-up notes
-Audit validation: status set to "Closed" and official report published
-View and download published reports
-🏗️ Architecture
+**CyberAudit** is a cybersecurity maturity assessment platform developed for Moroccan SMEs.
 
-Three-tier architecture: web client, lightweight application server, backend-as-a-service.
+The platform transforms the principles of the **CMRPI/AUSIM Cybersecurity Best Practices Guide for SMEs in Morocco** into an interactive assessment workflow.
 
-Web client (React 19, TanStack Router, Tailwind, shadcn/ui)
-        │  fetch / server functions
-Application server (TanStack Start, Nitro)
-        │  SQL queries via the Supabase client
-Supabase (PostgreSQL, Auth, Row Level Security)
+It enables an SME to:
 
-Afficher l'image
+- Evaluate its cybersecurity maturity
+- Identify security weaknesses
+- Receive prioritized recommendations
+- Visualize its maturity level
+- Map assessment results to **ISO/IEC 27001** and **NIST CSF**
+- Generate a cybersecurity diagnostic report in PDF
+- Track improvement actions
 
-🔐 Data Security
+An **auditor space** allows the CMRPI team to follow companies, validate assessments and publish official reports.
 
-Security is enforced at the database level, not only in the frontend:
+---
 
-Row Level Security (RLS) enabled on all business tables: each SME can only read and modify its own data (auth.uid() = owner_id).
-Broader read access for the auditor (SELECT on SME records) but restricted writes: only audit status and their own notes.
-SQL trigger that prevents an auditor account from modifying an audit's score or identifying data, even through the API.
-SECURITY DEFINER functions (e.g. has_role) centralizing role checks.
-Single auditor account, created by a server function using the service key, never exposed to the browser.
-Key separation: the public (anon) key only has the rights granted by RLS policies; the service role key stays server-side.
-Targeted compliance with Moroccan Law 09-08 (personal data protection), built into the questionnaire.
+## 🎓 Academic Context
+
+**End-of-year project (PFA2)**
+
+- **Institution:** ENSA Agadir
+- **Track:** IT Security & Digital Trust
+- **Host organization:** CMRPI – Espace Maroc Cyberconfiance
+- **Period:** 15 July – 31 August 2026
+- **Project type:** Pair project
+
+The project was developed as a practical application of cybersecurity maturity assessment, governance, risk management and security controls.
+
+---
+
+## 🎯 Problem Statement
+
+Many Moroccan SMEs face difficulties when assessing their cybersecurity maturity.
+
+Traditional cybersecurity audits can be:
+
+- Time-consuming
+- Expensive
+- Difficult to perform without specialized expertise
+
+At the same time, cybersecurity maturity guides are often provided as static documents.
+
+**CyberAudit addresses this gap by transforming the assessment process into an interactive platform providing automated scoring, security recommendations, framework mapping and auditor follow-up.**
+
+---
+
+## ✨ Key Features
+
+### 🏢 SME Space
+
+- Account registration and authentication
+- Password reset
+- Company profile management
+- Company information:
+  - Sector
+  - Organization size
+  - Region
+  - City
+
+### 📝 Cybersecurity Assessment
+
+The platform provides a **24-question questionnaire** covering five cybersecurity domains:
+
+1. Risk context and exposure
+2. Governance and organization
+3. Access and network security
+4. Security awareness
+5. Backup and compliance
+
+The assessment includes:
+
+- 18 scored questions
+- Score calculated out of 54
+- Overall maturity score
+- Per-domain scores
+- Four maturity levels:
+  - Initial
+  - Basic
+  - Intermediate
+  - Advanced
+
+### 💡 Security Recommendations
+
+Recommendations are generated based on the weakest assessment responses.
+
+This helps SMEs identify their main cybersecurity improvement priorities.
+
+### 📚 ISO 27001 & NIST CSF Mapping
+
+Each scored question is mapped to relevant cybersecurity controls.
+
+The platform indicates whether a control is:
+
+- **Covered**
+- **To strengthen**
+
+This provides a bridge between SME cybersecurity maturity assessment and recognized cybersecurity frameworks.
+
+### 📄 PDF Diagnostic Reports
+
+The platform generates PDF reports containing:
+
+- Overall maturity score
+- Score visualization
+- Domain-level results
+- Security recommendations
+- ISO 27001 / NIST CSF mapping
+
+### 📊 SME Dashboard
+
+The SME dashboard provides:
+
+- Assessment history
+- Audit requests
+- Action plan tracking
+- Notifications
+- Current cybersecurity maturity overview
+
+---
+
+## 👨‍💼 Auditor Space
+
+A dedicated auditor interface allows cybersecurity auditors to monitor and validate assessments.
+
+### Auditor Dashboard
+
+Provides an overview of:
+
+- Active missions
+- Followed companies
+- Audits awaiting validation
+- Average maturity score
+
+### Mission Management
+
+Missions can be filtered by status:
+
+- To plan
+- In progress
+- To validate
+- Closed
+
+### Mission Details
+
+Auditors can access:
+
+- Overall score
+- Domain scores
+- Recommendations
+- ISO 27001 / NIST CSF mapping
+- Follow-up notes
+
+### Audit Validation
+
+Auditors can validate an assessment and publish the resulting report.
+
+Published reports can then be viewed and downloaded.
+
+---
+
+## 🏗️ Architecture
+
+CyberAudit follows a three-tier architecture:
+
+```text
+┌──────────────────────────────┐
+│          Web Client          │
+│ React 19                     │
+│ TanStack Router              │
+│ Tailwind CSS                 │
+│ shadcn/ui                    │
+└──────────────┬───────────────┘
+               │
+               │ Fetch / Server Functions
+               ▼
+┌──────────────────────────────┐
+│      Application Server      │
+│ TanStack Start               │
+│ Nitro                        │
+└──────────────┬───────────────┘
+               │
+               │ Supabase Client
+               ▼
+┌──────────────────────────────┐
+│           Supabase           │
+│ PostgreSQL                   │
+│ Authentication               │
+│ Row Level Security (RLS)     │
+└──────────────────────────────┘
+🔐 Security Architecture
+
+Security was considered at both the application and database levels.
+
+Row Level Security
+
+PostgreSQL Row Level Security (RLS) is enabled on business tables.
+
+Each SME is restricted to its own data through ownership-based policies such as:
+
+auth.uid() = owner_id
+Role-Based Access Control
+
+The application distinguishes between different roles:
+
+SME
+Auditor
+Admin
+
+Role checks are centralized through security functions such as:
+
+has_role()
+Auditor Restrictions
+
+The auditor has broader read access for assessment follow-up but restricted write permissions.
+
+Database-level controls prevent unauthorized modification of sensitive audit information.
+
+Database Triggers
+
+SQL triggers are used to protect sensitive fields and prevent unauthorized modification of:
+
+Audit scores
+Identification data
+Other protected audit information
+Credential Separation
+
+The application separates public and privileged credentials.
+
+The:
+
+anon key
+
+is used with permissions enforced by RLS.
+
+The:
+
+service role key
+
+remains server-side and is never exposed to the browser.
+
+Server-Side Privileged Operations
+
+The dedicated auditor account is created through a server-side function using privileged credentials.
+
 🗄️ Data Model
 
-Nine tables linked by foreign keys, managed as versioned SQL migrations:
+The application uses PostgreSQL with nine main tables.
 
 Table	Purpose
-profiles	Profile linked to each account (type: SME or auditor)
-companies	Company attached to an SME account
-user_roles	Application roles (pme, auditor, admin)
-auditor_profiles	Auditor account information
-audits	Audits performed (status, score, dates)
-audit_questions	Question bank (axis, options, weighting)
-audit_answers	An SME's answers with the associated score
+profiles	Account profile and user type
+companies	Company information associated with an SME
+user_roles	Application roles
+auditor_profiles	Auditor information
+audits	Assessment records and scores
+audit_questions	Question bank and scoring configuration
+audit_answers	SME assessment responses
 audit_notes	Auditor follow-up notes
-audit_reports	Official report published after validation
+audit_reports	Published assessment reports
 
-Questions are stored in the database, so the questionnaire can evolve without redeploying the app.
+The database schema is managed through versioned SQL migrations.
+
+Questions are stored in the database, allowing the assessment questionnaire to evolve without requiring a complete application redeployment.
 
 📊 Screenshots
-SME Dashboard	Audit Results
-Afficher l'image	Afficher l'image
-ISO 27001 / NIST CSF Mapping	Auditor Space
-Afficher l'image	Afficher l'image
-🧰 Tech Stack
-Layer	Technology
-Framework	TanStack Start (React 19, TypeScript), TanStack Router, TanStack Query
-UI	Tailwind CSS, Radix UI, lucide-react, Recharts
-Forms & validation	react-hook-form, Zod
-Backend	Supabase (PostgreSQL, Auth, auto-generated API)
-PDF reports	jsPDF
-Build	Vite, Nitro
-Tooling	Git/GitHub, Docker (exploration), VS Code
+SME Dashboard
+
+Assessment Results
+
+ISO 27001 / NIST CSF Mapping
+
+Auditor Space
+
+Replace the image paths above with the actual filenames used in the repository.
+
+🧰 Technology Stack
+Layer	Technologies
+Frontend	React 19, TypeScript
+Routing	TanStack Router
+Application	TanStack Start, Nitro
+UI	Tailwind CSS, Radix UI, shadcn/ui
+Data Fetching	TanStack Query
+Forms	React Hook Form
+Validation	Zod
+Backend	Supabase
+Database	PostgreSQL
+Authentication	Supabase Auth
+Database Security	PostgreSQL RLS
+Charts	Recharts
+PDF Reports	jsPDF
+Build	Vite
+Version Control	Git / GitHub
+Development	VS Code
+Containerization	Docker (exploration)
 🚀 Getting Started
+Prerequisites
 
-⚠️ Check these commands and environment variable names against your code before publishing.
+Make sure you have:
 
-bash
-# 1. Clone the repository
+Node.js
+npm
+A Supabase project
+1. Clone the repository
 git clone https://github.com/asmamasrafi/cybersecurity-maturity-assessment.git
+
 cd cybersecurity-maturity-assessment
-
-# 2. Install dependencies
+2. Install dependencies
 npm install
+3. Configure environment variables
 
-# 3. Configure the environment (never commit .env)
+Create a local .env file based on the provided example:
+
 cp .env.example .env
-# Fill in the Supabase project URL and the public (anon) key
 
-# 4. Apply the SQL migrations (schema, RLS policies, triggers) to your Supabase project
+Configure the required Supabase environment variables.
 
-# 5. Run in development
+⚠️ Never commit .env files or privileged Supabase credentials.
+
+4. Configure the database
+
+Apply the SQL migrations to the Supabase PostgreSQL database.
+
+These migrations configure:
+
+Database schema
+Tables
+Relationships
+RLS policies
+Security functions
+Database triggers
+5. Run the development server
 npm run dev
-
-# Check compilation and TypeScript types
+6. Build the application
 npm run build
-
-⚠️ The Supabase service role key must never be committed or exposed client-side.
-
 🧪 Testing & Validation
 
-Mostly manual: end-to-end functional tests (sign-up, audit, validation, report), simultaneous multi-actor tests (normal and private browsing), RLS policy checks directly in the Supabase SQL editor, and npm run build before each integration.
+The project was mainly validated through manual and end-to-end testing.
 
+Testing included:
+
+User registration
+Authentication
+Password reset
+SME assessment workflow
+Score calculation
+Recommendation generation
+PDF report generation
+Auditor workflow
+Audit validation
+Report publication
+RLS policy verification
+Multi-user scenarios
+Private browsing tests
+TypeScript/build validation
+
+The application was regularly validated using:
+
+npm run build
 🗺️ Project Timeline
-Milestone 1 (15–31 Jul): studying the CMRPI/AUSIM guide, designing the questionnaire and scoring rule.
-Milestone 2 (1–15 Aug): Streamlit (Python) prototype, tested on fictional SME profiles.
-Milestone 3 (16–31 Aug): full React/Supabase platform, PDF reports, auditor space, ISO/NIST mapping.
+Milestone 1 — 15–31 July 2026
+Study of the CMRPI/AUSIM cybersecurity guide
+Questionnaire design
+Cybersecurity maturity model definition
+Scoring rule design
+Milestone 2 — 1–15 August 2026
+Development of a Streamlit prototype
+Python implementation
+Testing with fictional SME profiles
+Milestone 3 — 16–31 August 2026
+Migration to React/Supabase architecture
+Full web platform development
+PDF report generation
+Auditor space
+ISO 27001 / NIST CSF mapping
+Security controls and RLS implementation
+📌 Key Results
+Interactive cybersecurity maturity assessment
+24-question assessment across five security domains
+18 scored questions
+Four maturity levels
+Automated security recommendations
+ISO 27001 / NIST CSF mapping
+PDF cybersecurity diagnostic reports
+SME and auditor workflows
+PostgreSQL Row Level Security
+Role-based access control
+Database-level security controls
+Server-side handling of privileged credentials
 🔭 Future Work
-Score evolution tracking over time for a given SME
-Automatic report delivery to company management by email
-Additional comparison framework
-Automated tests, finalized Docker containerization, production deployment
-Multiple auditors with case assignment
-⚠️ Notes
-All data shown is demo data.
-The questionnaire is based on the Cybersecurity Best Practices Guide for SMEs in Morocco (CMRPI/AUSIM, 2018).
+
+Potential improvements include:
+
+Maturity score evolution over time
+Automated report delivery
+Additional cybersecurity frameworks
+Automated test coverage
+Finalized Docker containerization
+Production deployment
+Multiple auditors
+Auditor case assignment
+Advanced cybersecurity analytics
+📚 Reference
+
+The assessment questionnaire is based on the:
+
+Cybersecurity Best Practices Guide for SMEs in Morocco — CMRPI / AUSIM (2018).
+
+The project also incorporates concepts from:
+
+ISO/IEC 27001
+NIST Cybersecurity Framework
+Moroccan Law 09-08 regarding personal data protection
+⚠️ Disclaimer
+
+This project is an academic cybersecurity assessment platform and is intended for educational and demonstration purposes.
+
+It does not replace a formal cybersecurity audit, penetration test, risk assessment, legal assessment or professional compliance audit.
+
+All data presented in the demonstration environment is fictional or demo data.
+
 👥 Team
 
-Built as a pair project:
+Built as a pair project by:
 
-Assma MASRAFI – LinkedIn
+Assma MASRAFI
+Cybersecurity Engineering Student — ENSA Agadir
+
 Wissal EZZAIRI
 
-Supervised by Dr. Rachid Abouettahir, with the support of Pr. Zakia Errabih. Host organization: CMRPI – Espace Maroc Cyberconfiance.
+Supervision
 
+Dr. Rachid Abouettahir
+
+With the support of:
+
+Pr. Zakia Errabih
+
+Host Organization
+
+CMRPI — Espace Maroc Cyberconfiance
+
+📫 Contact
+
+Assma MASRAFI
+
+GitHub: https://github.com/asmamasrafi
+LinkedIn: Assma MASRAFI
+
+Interested in:
+
+SOC • Blue Team • Cybersecurity GRC • Security Assessment • Security Engineering
