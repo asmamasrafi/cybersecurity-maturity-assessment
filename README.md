@@ -177,6 +177,7 @@ Published reports can then be viewed and downloaded.
 
 ## 🏗️ Architecture
 
+![CyberAudit Architecture](docs/arcchetcure.png)
 CyberAudit follows a three-tier architecture:
 
 ```text
