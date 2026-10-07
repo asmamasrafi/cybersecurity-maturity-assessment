@@ -232,15 +232,17 @@ The application uses PostgreSQL with nine main tables. The database schema is ma
 ## 📊 Screenshots
 
 - **SME Dashboard:** 
-  ![SME Dashboard](./path/to/dashboard-image.png)
+  ![SME Space](espace_PME.png)
 - **Assessment Results:** 
-  ![Assessment Results](./path/to/results-image.png)
+![Audit Results](resultat_audit.png)
 - **ISO 27001 / NIST CSF Mapping:** 
-  ![Mapping](./path/to/mapping-image.png)
-- **Auditor Space:** 
-  ![Auditor Space](./path/to/auditor-image.png)
+![ISO 27001 and NIST CSF Mapping](RefNIST_ISO.png)
 
-*(Note: Replace the image paths above with the actual filenames used in the repository.)*
+- **Auditor Space:** 
+![Auditor Interface](interface_auditor.png)
+- **Auditor Report:** 
+![Audit Report](Section_rapport.png)
+
 
 ---
 
