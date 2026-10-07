@@ -310,3 +310,192 @@ Make sure you have:
    cd cybersecurity-maturity-assessment
 ---
 
+1. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+2. **Configure environment variables**
+
+   Create a local `.env` file based on the provided example:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Configure the required Supabase environment variables.
+
+   > ⚠️ **Warning:** Never commit `.env` files or privileged Supabase credentials.
+
+3. **Configure the database**
+
+   Apply the SQL migrations to the Supabase PostgreSQL database.
+
+   These migrations configure:
+
+   * Database schema
+   * Tables and relationships
+   * Row Level Security (RLS) policies
+   * Security functions
+   * Database triggers
+
+4. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+5. **Build the application**
+
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 🧪 Testing & Validation
+
+The project was mainly validated through manual and end-to-end testing. The application was regularly validated using:
+
+```bash
+npm run build
+```
+
+**Testing included:**
+
+* User registration, authentication, and password reset
+* SME cybersecurity assessment workflow
+* Automated maturity score calculation
+* Security recommendations generation
+* PDF report generation
+* Auditor workflow, including audit validation and report publication
+* RLS policy verification
+* Multi-user access scenarios
+* Private browsing tests
+* TypeScript and production build validation
+
+---
+
+## 🗺️ Project Timeline
+
+### Milestone 1 — 15–31 July 2026
+
+* Study of the CMRPI/AUSIM cybersecurity guide
+* Questionnaire design
+* Cybersecurity maturity model definition
+* Scoring rules design
+
+### Milestone 2 — 1–15 August 2026
+
+* Development of a Streamlit prototype
+* Python implementation
+* Testing with fictional SME profiles
+
+### Milestone 3 — 16–31 August 2026
+
+* Migration to React/Supabase architecture
+* Full web platform development
+* PDF report generation
+* Auditor space implementation
+* ISO 27001 / NIST CSF mapping
+* Security controls implementation
+* Row Level Security (RLS) implementation
+
+---
+
+## 📌 Key Results
+
+* Interactive cybersecurity maturity assessment platform
+* 24-question assessment across five security domains
+* 18 scored questions
+* Four cybersecurity maturity levels
+* Automated security recommendations
+* ISO/IEC 27001 and NIST CSF mapping
+* Automated PDF cybersecurity diagnostic reports
+* Dedicated SME and auditor workflows
+* PostgreSQL Row Level Security (RLS)
+* Role-Based Access Control (RBAC)
+* Database-level security controls
+* Server-side handling of privileged credentials
+
+---
+
+## 🔭 Future Work
+
+Potential improvements include:
+
+* Maturity score evolution and historical tracking
+* Automated report delivery
+* Integration of additional cybersecurity frameworks
+* Automated test coverage
+* Finalized Docker containerization
+* Production deployment
+* Support for multiple auditors
+* Auditor case assignment
+* Advanced cybersecurity analytics and dashboards
+
+---
+
+## 📚 References
+
+The assessment questionnaire is based on the:
+
+**Cybersecurity Best Practices Guide for SMEs in Morocco** — CMRPI / AUSIM (2018)
+
+The project also incorporates concepts from:
+
+* **ISO/IEC 27001**
+* **NIST Cybersecurity Framework (NIST CSF)**
+* **Moroccan Law 09-08** regarding personal data protection
+
+---
+
+## ⚠️ Disclaimer
+
+This project is an academic cybersecurity assessment platform intended for educational and demonstration purposes.
+
+It does **not** replace:
+
+* A formal cybersecurity audit
+* A penetration test
+* A professional risk assessment
+* A legal assessment
+* A professional compliance audit
+
+All data presented in the demonstration environment is fictional or demo data.
+
+---
+
+## 👥 Team
+
+Built as a pair project by:
+
+* **Assma MASRAFI** — Cybersecurity Engineering Student, ENSA Agadir
+* **Wissal EZZAIRI**
+
+### Supervision
+
+* **Dr. Rachid Abouettahir**
+
+### With the support of
+
+* **Pr. Zakia Errabih**
+
+### Host Organization
+
+* **CMRPI — Espace Maroc Cyberconfiance**
+
+---
+
+## 📫 Contact
+
+### Assma MASRAFI
+
+* **GitHub:** [@asmamasrafi](https://github.com/asmamasrafi)
+* **LinkedIn:** [Assma MASRAFI](#)
+
+### Areas of Interest
+
+**SOC • Blue Team • Cybersecurity GRC • Security Assessment • Security Engineering**
+
