@@ -205,6 +205,7 @@ CyberAudit follows a three-tier architecture:
 │ Row Level Security (RLS)     │
 └──────────────────────────────┘
 
+```
 ---
 
 🔐 Security Architecture
