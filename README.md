@@ -180,33 +180,6 @@ Published reports can then be viewed and downloaded.
 ![CyberAudit Architecture](docs/arcchetcure.png)
 CyberAudit follows a three-tier architecture:
 
-```text
-┌──────────────────────────────┐
-│          Web Client          │
-│ React 19                     │
-│ TanStack Router              │
-│ Tailwind CSS                 │
-│ shadcn/ui                    │
-└──────────────┬───────────────┘
-               │
-               │ Fetch / Server Functions
-               ▼
-┌──────────────────────────────┐
-│      Application Server      │
-│ TanStack Start               │
-│ Nitro                        │
-└──────────────┬───────────────┘
-               │
-               │ Supabase Client
-               ▼
-┌──────────────────────────────┐
-│           Supabase           │
-│ PostgreSQL                   │
-│ Authentication               │
-│ Row Level Security (RLS)     │
-└──────────────────────────────┘
-
-```
 ## 🔐 Security Architecture
 
 Security was considered at both the application and database levels.
